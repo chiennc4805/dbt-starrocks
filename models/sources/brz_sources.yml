@@ -1,0 +1,11 @@
+version: 1
+
+sources:
+  - name: hive_catalog_silver
+    database: hive_catalog
+    schema: silver
+    tables:
+      - name: src_txn_event
+      - name: src_stock_5min
+      - name: src_index_5min
+      - name: src_customer_segment_monthly
