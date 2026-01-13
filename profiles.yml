@@ -5,7 +5,7 @@ demo_dbt_starrocks:
       host: kube-starrocks-fe-service.warehouse.svc.cluster.local
       port: 9030
       username: poc_demo
-      password: 123456
+      password: "123456"
       catalog: default_catalog
       schema: gold
       threads: 4

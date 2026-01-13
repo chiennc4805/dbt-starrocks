@@ -33,3 +33,4 @@ models:
   demo_dbt_starrocks:
     gold:
       +materialized: table
+      +transaction: False

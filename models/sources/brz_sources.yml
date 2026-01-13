@@ -2,8 +2,7 @@ version: 1
 
 sources:
   - name: hive_catalog_silver
-    database: hive_catalog
-    schema: silver
+    schema: hive_catalog.silver
     tables:
       - name: src_txn_event
       - name: src_stock_5min
