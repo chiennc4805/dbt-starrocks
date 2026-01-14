@@ -24,7 +24,7 @@ calculated_cte AS(
             WHEN 1 THEN open_vnd
         END AS daily_open_price,
         CASE rnb_ts_desc
-            WHEN 1 THEN AVG(high_vnd, low_vnd) 
+            WHEN 1 THEN (high_vnd + low_vnd) / 2 
         END AS price,
         MIN(low_vnd) AS daily_low_price,
         MAX(high_vnd) AS daily_high_price,
