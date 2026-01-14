@@ -48,4 +48,4 @@ SELECT
     daily_high_price,
     trading_volume,
     trading_value
-FROM calculated_first_last_value
+FROM calculated_cte
