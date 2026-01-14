@@ -15,8 +15,7 @@ WITH first_last_value_of_day AS (
         ROW_NUMBER() OVER(PARTITION BY stock_code, trade_date ORDER BY ts_5m_local ASC) AS rnb_ts_asc,
         ROW_NUMBER() OVER(PARTITION BY stock_code, trade_date ORDER BY ts_5m_local DESC) AS rnb_ts_desc
     FROM {{source('hive_catalog_silver', 'src_stock_5min')}}
-    WHERE rnb_ts_desc = 1
-), 
+),
 calculated_cte AS(
     SELECT
         stock_code,
