@@ -20,16 +20,20 @@ calculated_cte AS(
     SELECT
         stock_code,
         trade_date,
-        CASE rnb_ts_asc
-            WHEN 1 THEN open_vnd
-        END AS daily_open_price,
-        CASE rnb_ts_desc
-            WHEN 1 THEN (high_vnd + low_vnd) / 2 
-        END AS price,
+        AVG(
+            CASE rnb_ts_asc
+                WHEN 1 THEN open_vnd
+            END
+        ) AS daily_open_price, --buộc phải sử dụng hàm vì đang group, nhưng không ảnh hưởng vì chỉ có 1 record
+        AVG(
+            CASE rnb_ts_desc
+                WHEN 1 THEN (high_vnd + low_vnd) / 2 
+            END
+        ) AS price, --buộc phải sử dụng hàm vì đang group, nhưng không ảnh hưởng vì chỉ có 1 record
         MIN(low_vnd) AS daily_low_price,
         MAX(high_vnd) AS daily_high_price,
         SUM(volume_shares) AS trading_volume,
-        SUM(AVG(closed_vnd) * SUM(volume_shares)) AS trading_value
+        SUM(close_vnd * volume_shares) AS trading_value --close_vnd không đổi nên không ảnh hưởng
     FROM first_last_value_of_day
     GROUP BY stock_code, trade_date
 )
