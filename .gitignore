@@ -2,9 +2,4 @@
 target/
 dbt_packages/
 logs/
-models/gold/dim_index.sql
-models/gold/dim_segment.sql
-models/gold/dim_trading_type.sql
-models/gold/fact_market_index.sql
-models/gold/fact_transaction.sql
 dbt_dags.py
